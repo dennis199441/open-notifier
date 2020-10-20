@@ -16,7 +16,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: open-notifier
-        image: dennis199441/open-notifier:0.1.0
+        image: dennis199441/open-notifier:latest
         imagePullPolicy: Always
         env:
         # use Secrets for production
