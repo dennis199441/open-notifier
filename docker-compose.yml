@@ -8,7 +8,7 @@ services:
         build:
             dockerfile: Dockerfile
             context: ./
-        image: dennis199441/open-notifier:0.1.0
+        image: dennis199441/open-notifier:latest
         restart: always
         env_file:
             - variables.env
