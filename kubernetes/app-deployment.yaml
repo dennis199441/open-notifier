@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-notifier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: open-notifier
+  template:
+    metadata:
+      labels:
+        app: open-notifier
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: open-notifier
+        image: emali.azurecr.io/open-notifier:latest
+        imagePullPolicy: Always
+        env:
+        # use Secrets for production
+        - name: PORT
+          value: "9500"
+        - name: EMAIL_DOMAIN
+          value: <sender email address>
+        - name: TWILIO_ACCOUNT_SID
+          value: <twilio account id>
+        - name: TWILIO_AUTH_TOKEN
+          value: <twilio token>
+        - name: TWILIO_PHONE_NUMBER
+          value: <twilio phone number>
+        - name: SENDGRID_API_KEY
+          value: <sendgrid api key>
+        - name: AWS_ACCESS_KEY_ID
+          value: <aws access key id>
+        - name: AWS_SECRET_ACCESS_KEY
+          value: <aws secret access key>
+        - name: AWS_REGION
+          value: <aws region>
+        resources:
+          requests:
+            cpu: 0.1
+            memory: 128Mi
+          limits:
+            cpu: 0.5
+            memory: 256Mi
+        ports:
+        - containerPort: 9400
+          name: open-notifier
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-notifier
+spec:
+  ports:
+  - port: 9400
+  selector:
+    app: open-notifier

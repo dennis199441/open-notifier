@@ -1,0 +1,18 @@
+version: "3.1"
+
+networks:
+    on_net:
+
+services:
+    app:
+        build:
+            dockerfile: Dockerfile
+            context: ./
+        image: open-notifier:0.1.0
+        restart: always
+        env_file:
+            - variables.env
+        ports:
+            - 9400:9400
+        networks:
+            - on_net
