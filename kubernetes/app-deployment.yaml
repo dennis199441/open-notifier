@@ -16,7 +16,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: open-notifier
-        image: emali.azurecr.io/open-notifier:latest
+        image: dennis199441/open-notifier:0.1.0
         imagePullPolicy: Always
         env:
         # use Secrets for production
