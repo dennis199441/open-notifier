@@ -128,9 +128,12 @@ Sms API is still alive!
 
 ## Run on local
 ```
+cp variables.env.tmp variables.env
+
+// update variables.env
+
 docker-compose build
-```
-```
+
 docker-compose up -d
 ```
 
