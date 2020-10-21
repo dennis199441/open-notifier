@@ -30,6 +30,8 @@ spec:
           value: <twilio token>
         - name: TWILIO_PHONE_NUMBER
           value: <twilio phone number>
+        - name: EMAIL_CLIENT_
+          value: <your email client (AWS or SENDGRID)>
         - name: SENDGRID_API_KEY
           value: <sendgrid api key>
         - name: AWS_ACCESS_KEY_ID

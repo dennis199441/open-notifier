@@ -1,8 +1,8 @@
-const { sgMail } = require('../utils/client.sendgrid');
-const { awsSesClient } = require('../utils/client.aws');
+const EmailClientFactory  = require('./utils/client.factory');
+const emailClientFactory = new EmailClientFactory();
 
 const EmailService = require("./email.service");
-const emailService = new EmailService(awsSesClient);
+const emailService = new EmailService(emailClientFactory.getClient());
 
 module.exports = {
     emailService
